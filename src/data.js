@@ -8,7 +8,7 @@ import lotus from "./assets/lotus.png";
 import vafli from "./assets/vafli.png";
 import pistachio from "./assets/pistachio.png";
 import dubai from "./assets/dubai.png";
-import sansebastian from "./assets/SanSebastian.png";
+import sanseb from "./assets/SanSebastian.png";
 
 const data = [
   {
@@ -17,8 +17,8 @@ const data = [
     image: pepsi,
     prices: [
       { size: "0.5L", price: 7000 },
-      { size: "1L", price: 14000 }
-    ]
+      { size: "1L", price: 14000 },
+    ],
   },
   {
     category: "Drinks",
@@ -26,8 +26,8 @@ const data = [
     image: fanta,
     prices: [
       { size: "0.5L", price: 8000 },
-      { size: "1L", price: 15000 }
-    ]
+      { size: "1L", price: 15000 },
+    ],
   },
   {
     category: "Drinks",
@@ -35,8 +35,8 @@ const data = [
     image: cola,
     prices: [
       { size: "0.5L", price: 7500 },
-      { size: "1L", price: 14500 }
-    ]
+      { size: "1L", price: 14500 },
+    ],
   },
   {
     category: "Drinks",
@@ -44,8 +44,8 @@ const data = [
     image: sprite,
     prices: [
       { size: "0.5L", price: 7500 },
-      { size: "1L", price: 14500 }
-    ]
+      { size: "1L", price: 14500 },
+    ],
   },
   {
     category: "Drinks",
@@ -53,8 +53,8 @@ const data = [
     image: moxitto,
     prices: [
       { size: "0.5L", price: 7500 },
-      { size: "1L", price: 14500 }
-    ]
+      { size: "1L", price: 14500 },
+    ],
   },
   {
     category: "Sweets",
@@ -62,8 +62,8 @@ const data = [
     image: cheesecake,
     prices: [
       { size: "slice", price: 12000 },
-      { size: "whole", price: 70000 }
-    ]
+      { size: "whole", price: 70000 },
+    ],
   },
   {
     category: "Sweets",
@@ -71,8 +71,8 @@ const data = [
     image: lotus,
     prices: [
       { size: "1 pcs", price: 5000 },
-      { size: "6 pcs", price: 28000 }
-    ]
+      { size: "6 pcs", price: 28000 },
+    ],
   },
   {
     category: "Sweets",
@@ -80,8 +80,8 @@ const data = [
     image: vafli,
     prices: [
       { size: "single", price: 10000 },
-      { size: "double", price: 18000 }
-    ]
+      { size: "double", price: 18000 },
+    ],
   },
   {
     category: "Sweets",
@@ -89,8 +89,8 @@ const data = [
     image: pistachio,
     prices: [
       { size: "single", price: 10000 },
-      { size: "double", price: 18000 }
-    ]
+      { size: "double", price: 18000 },
+    ],
   },
   {
     category: "Sweets",
@@ -98,18 +98,18 @@ const data = [
     image: dubai,
     prices: [
       { size: "single", price: 10000 },
-      { size: "double", price: 18000 }
-    ]
+      { size: "double", price: 18000 },
+    ],
   },
   {
     category: "Sweets",
     name: "SanSebastian",
-    image: sansebastian,
+    image: sanseb,
     prices: [
       { size: "single", price: 10000 },
-      { size: "double", price: 18000 }
-    ]
-  }
+      { size: "double", price: 18000 },
+    ],
+  },
 ];
 
 export default data;
