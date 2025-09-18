@@ -15,7 +15,7 @@ const categoryImages = {
 
 // ---------------- Carusell ----------------
 function Carusell({ title, isActive, index }) {
-  const image = categoryImages[title]; 
+  const image = categoryImages[title];
   return (
     <div
       id={index}
@@ -29,7 +29,7 @@ function Carusell({ title, isActive, index }) {
         position: "relative",
         overflow: "hidden",
         fontWeight: isActive ? "bold" : "normal",
-        boxShadow:'3px 5px 15px 2px rgba(38, 38, 38, 0.59)'
+        boxShadow: '3px 5px 15px 2px rgba(38, 38, 38, 0.59)'
       }}
     >
       <img
@@ -51,11 +51,11 @@ function Carusell({ title, isActive, index }) {
           position: "relative",
           color: "white",
           padding: "15px 0 0 10px",
-          fontWeight:'bold', 
+          fontWeight: 'bold',
           borderRadius: "12px",
           marginBottom: "10px",
           fontSize: "27px",
-          textShadow:'2px 2px 3px #0000008A'
+          textShadow: '2px 2px 3px #0000008A'
         }}
       >
         {title}
@@ -77,7 +77,7 @@ function Card({ item, onClick }) {
         overflow: "hidden",
         cursor: "pointer",
         position: "relative",
-        boxShadow:'0px 5px 10px 1px rgba(38, 38, 38, 0.30)'
+        boxShadow: '0px 5px 10px 1px rgba(38, 38, 38, 0.30)'
       }}
     >
       <img
@@ -93,9 +93,9 @@ function Card({ item, onClick }) {
       <div
         style={{
           position: "absolute",
-          left:0,
+          left: 0,
           top: 0,
-          textShadow:'1px 2px 2px #0000008A', 
+          textShadow: '1px 2px 2px #0000008A',
           color: "white",
           padding: "10px",
           textAlign: "center",
@@ -191,22 +191,22 @@ function Modal({ item, onClose }) {
             borderCollapse: "collapse",
             marginBottom: "10px",
             fontSize: "1rem",
-            margin:'10px auto'
+            margin: '10px auto'
           }}
         >
           <thead>
             <tr>
-              <th style={{padding:"10px 0", textAlign:"left", color:"#666"}}>Size</th>
-              <th style={{padding:"10px 0", textAlign:"right", color:"#666"}}>Price</th>
+              <th style={{ padding: "10px 0", textAlign: "left", color: "#666" }}>Size</th>
+              <th style={{ padding: "10px 0", textAlign: "right", color: "#666" }}>Price</th>
             </tr>
           </thead>
           <tbody>
             {item.prices.map((p, i) => (
               <tr key={i}>
-                <td style={{padding:"10px 0", borderBottom:"1px solid #DDDDDD"}}>
+                <td style={{ padding: "10px 0", borderBottom: "1px solid #DDDDDD" }}>
                   {p.size}
                 </td>
-                <td style={{padding:"10px 0", textAlign:"right", borderBottom:"1px solid #DDDDDD", fontWeight:600, color:"#111"}}>
+                <td style={{ padding: "10px 0", textAlign: "right", borderBottom: "1px solid #DDDDDD", fontWeight: 600, color: "#111" }}>
                   {p.price.toLocaleString()} UZS
                 </td>
               </tr>
@@ -260,19 +260,19 @@ function SearchBar({ search, setSearch }) {
   }, [open]);
 
   return (
-    <div ref={wrapperRef} style={{ display:"flex", alignItems:"center", position:"relative" }}>
+    <div ref={wrapperRef} style={{ display: "flex", alignItems: "center", position: "relative" }}>
       <button
         onClick={() => setOpen(true)}
         style={{
-          background:"transparent",
-          border:"none",
-          color:"white",
-          fontSize:"20px",
-          cursor:"pointer",
-          zIndex:2,
+          background: "transparent",
+          border: "none",
+          color: "white",
+          fontSize: "20px",
+          cursor: "pointer",
+          zIndex: 2,
         }}
       >
-        <i style={{color:'#0000009D'}} className="fa-solid fa-magnifying-glass"></i>
+        <i style={{ color: '#0000009D' }} className="fa-solid fa-magnifying-glass"></i>
       </button>
       <input
         ref={inputRef}
@@ -281,20 +281,20 @@ function SearchBar({ search, setSearch }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{
-          position:"absolute",
-          right:0,
-          top:"50%",
-          transform:"translateY(-50%)",
-          padding:"5px 10px",
-          borderRadius:"10px",
-          border:"none",
-          outline:"none",
-          fontSize:"16px",
+          position: "absolute",
+          right: 0,
+          top: "50%",
+          transform: "translateY(-50%)",
+          padding: "5px 10px",
+          borderRadius: "10px",
+          border: "none",
+          outline: "none",
+          fontSize: "16px",
           width: open ? "180px" : "0px",
           opacity: open ? 1 : 0,
-          transition:"all 0.3s ease",
-          background:"#42424224",
-          color:"black",
+          transition: "all 0.3s ease",
+          background: "#42424224",
+          color: "black",
         }}
       />
     </div>
@@ -316,9 +316,9 @@ function App() {
   const catigory = ["Drinks", "Sweets", "Pizzas", "Burgers"];
 
   useEffect(() => {
-     try {
+    try {
       setLoading(true);
-     
+
       setTimeout(() => {
         setData(dataMenu);
         setLoading(false);
@@ -374,13 +374,13 @@ function App() {
         ref={containerRef}
         className="container"
         style={{
-          width:"100%",
-          height:"100dvh",
-          paddingTop:"13%",
-          maxWidth:550,
-          margin:"0 auto",
-          overflowY:"auto",
-          alignItems:"center",
+          width: "100%",
+          height: "100dvh",
+          paddingTop: "13%",
+          maxWidth: 550,
+          margin: "0 auto",
+          overflowY: "auto",
+          alignItems: "center",
         }}
       >
         {/* navbar */}
@@ -388,19 +388,19 @@ function App() {
           ref={headerRef}
           id="myHeader"
           style={{
-            position:"fixed",
-            top:0,
-            left:0,
-            right:0,
-            background:"#fefefe",
-            padding:"10px 15px",
-            fontSize:"20px",
-            transition:"transform 0.3s ease-in-out",
-            zIndex:1000,
-            display:"flex",
-            alignItems:"center",
-            justifyContent:"space-between",
-            boxShadow:'0 0 5px 1px #0000003D'
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            background: "#fefefe",
+            padding: "10px 15px",
+            fontSize: "20px",
+            transition: "transform 0.3s ease-in-out",
+            zIndex: 1000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            boxShadow: '0 0 5px 1px #0000003D'
           }}
         >
           <span>logo</span>
@@ -412,24 +412,24 @@ function App() {
           ref={caruselRef}
           className="carusel"
           style={{
-            position:"relative",
-            display:"flex",
-            alignItems:"center",
-            height:"220px",
-            width:"100%",
-            overflowX:"auto",
-            scrollSnapType:"x mandatory",
-            scrollBehavior:"smooth",
-            gap:"25px",
-            padding:"0 3%",
-            margin:"0 auto",
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            height: "220px",
+            width: "100%",
+            overflowX: "auto",
+            scrollSnapType: "x mandatory",
+            scrollBehavior: "smooth",
+            gap: "25px",
+            padding: "0 3%",
+            margin: "0 auto",
           }}
         >
           {loading
             ? Array(3).fill(0).map((_, i) => <SkeletonCarusell key={i} />)
             : catigory.map((c, i) => (
-                <Carusell key={i} index={i} title={c} isActive={activeCatigory == c} />
-              ))}
+              <Carusell key={i} index={i} title={c} isActive={activeCatigory == c} />
+            ))}
         </div>
 
         {/* grid */}
@@ -437,19 +437,19 @@ function App() {
           key={activeCatigory + search}
           className="cards-grid"
           style={{
-            padding:"0 3%",
-            width:"100%",
-            display:"grid",
-            gridTemplateColumns:"1fr 1fr",
-            gap:15,
-            overflowX:"hidden",
-            marginTop:"20px"
+            padding: "0 3%",
+            width: "100%",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 15,
+            overflowX: "hidden",
+            marginTop: "20px"
           }}
         >
           {loading ? (
             Array(4).fill(0).map((_, i) => <SkeletonCard key={i} />)
           ) : err ? (
-            <p style={{ color:"red" }}>{err}</p>
+            <p style={{ color: "red" }}>{err}</p>
           ) : (
             (() => {
               const filtered = data.filter(
@@ -464,12 +464,12 @@ function App() {
               ) : (
                 <p
                   style={{
-                    gridColumn:"1 / -1",
-                    textAlign:"center",
-                    color:"white",
-                    fontSize:"18px",
-                    marginTop:"20px",
-                    opacity:0.8,
+                    gridColumn: "1 / -1",
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: "18px",
+                    marginTop: "20px",
+                    opacity: 0.8,
                   }}
                 >
                   ❌ Topilmadi
