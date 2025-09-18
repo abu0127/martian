@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import dataJson from "./data.json"; // ✅ src ichidan import
+import dataMenu from "./data";
 import drinks from "../public/assets/coctel-banan.png";
 import sweet from "../public/assets/sweets.png";
 import pizza from "../public/assets/category_pizza.png";
@@ -316,12 +316,13 @@ function App() {
   const catigory = ["Drinks", "Sweets", "Pizzas", "Burgers"];
 
   useEffect(() => {
-    try {
+     try {
       setLoading(true);
+     
       setTimeout(() => {
-        setData(dataJson); // ✅ import qilingan JSON ishlatyapmiz
+        setData(dataMenu);
         setLoading(false);
-      }, 1000);
+      }, 2000);
     } catch (err) {
       console.error(err);
       setErr(err.message);
