@@ -81,7 +81,7 @@ function Card({ item, onClick }) {
       }}
     >
       <img
-        src={item.image}
+        src={`${import.meta.env.BASE_URL}${item.image}`}
         alt={item.name}
         style={{
           width: "100%",
@@ -162,7 +162,7 @@ function Modal({ item, onClose }) {
         </button>
 
         <img
-          src={item.image}
+          src={`${import.meta.env.BASE_URL}${item.image}`}
           alt={item.name}
           style={{
             width: "100%",

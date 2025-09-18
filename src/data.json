@@ -2,7 +2,7 @@
   {
     "category": "Drinks",
     "name": "Pepsi",
-    "image": "assets/pepsi.png",
+    "image": "public/assets/pepsi.png",
     "prices": [
       {
         "size": "0.5L",
@@ -17,7 +17,7 @@
   {
     "category": "Drinks",
     "name": "Fanta",
-    "image": "assets/fanta.png",
+    "image": "public/assets/fanta.png",
     "prices": [
       {
         "size": "0.5L",
@@ -32,7 +32,7 @@
   {
     "category": "Drinks",
     "name": "Cola",
-    "image": "assets/cola.png",
+    "image": "public/assets/cola.png",
     "prices": [
       {
         "size": "0.5L",
@@ -48,7 +48,7 @@
   {
     "category": "Drinks",
     "name": "Sprirte",
-    "image": "assets/sprite.png",
+    "image": "public/assets/sprite.png",
     "prices": [
       {
         "size": "0.5L",
