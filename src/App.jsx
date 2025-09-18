@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import dataMenu from "./data";
-import drinks from "../public/assets/coctel-banan.png";
-import sweet from "../public/assets/sweets.png";
-import pizza from "../public/assets/category_pizza.png";
+import drinks from "./assets/coctel-banan.png";
+import sweet from "./assets/sweets.png";
+import pizza from "./assets/category_pizza.png";
 // import burger from "./assets/burger.png";
 
 const categoryImages = {
