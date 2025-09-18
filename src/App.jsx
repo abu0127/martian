@@ -1,15 +1,21 @@
 import { useState, useEffect, useRef } from "react";
+import dataJson from "./data.json"; // ✅ src ichidan import
+import drinks from "../public/assets/coctel-banan.png";
+import sweet from "../public/assets/sweets.png";
+import pizza from "../public/assets/category_pizza.png";
+// import burger from "./assets/burger.png";
 
 const categoryImages = {
-  Drinks: "/assets/drinks.png",
-  Sweets: "/assets/sweet.png",
-  Pizzas: "/assets/category_pizza.png",
-  burgers: "/assets/burger.png" // agar bor bo‘lsa
+  Drinks: drinks,
+  Sweets: sweet,
+  Pizzas: pizza,
+  // Burgers: burger
 };
 
 
+// ---------------- Carusell ----------------
 function Carusell({ title, isActive, index }) {
-  const image = categoryImages[title]; // title asosida rasm tanlanadi
+  const image = categoryImages[title]; 
   return (
     <div
       id={index}
@@ -26,7 +32,6 @@ function Carusell({ title, isActive, index }) {
         boxShadow:'3px 5px 15px 2px rgba(38, 38, 38, 0.59)'
       }}
     >
-      {/* Rasim to‘liq qoplab turadi */}
       <img
         src={image}
         alt={title}
@@ -41,8 +46,6 @@ function Carusell({ title, isActive, index }) {
           transition: "filter 0.4s",
         }}
       />
-
-      {/* Title overlay */}
       <div
         style={{
           position: "relative",
@@ -53,7 +56,6 @@ function Carusell({ title, isActive, index }) {
           marginBottom: "10px",
           fontSize: "27px",
           textShadow:'2px 2px 3px #0000008A'
-          
         }}
       >
         {title}
@@ -62,8 +64,7 @@ function Carusell({ title, isActive, index }) {
   );
 }
 
-
-
+// ---------------- Card ----------------
 function Card({ item, onClick }) {
   return (
     <div
@@ -79,7 +80,6 @@ function Card({ item, onClick }) {
         boxShadow:'0px 5px 10px 1px rgba(38, 38, 38, 0.30)'
       }}
     >
-      {/* ✅ Rasm cardni to‘liq qoplaydi */}
       <img
         src={item.image}
         alt={item.name}
@@ -90,8 +90,6 @@ function Card({ item, onClick }) {
           display: "block",
         }}
       />
-
-      {/* ✅ Matn overlay sifatida (pastida) chiqadi */}
       <div
         style={{
           position: "absolute",
@@ -105,15 +103,14 @@ function Card({ item, onClick }) {
         }}
       >
         {item.name}
-       
       </div>
     </div>
   );
 }
 
+// ---------------- Modal ----------------
 function Modal({ item, onClose }) {
   if (!item) return null;
-  
   return (
     <div
       className="modal-overlay"
@@ -142,11 +139,9 @@ function Modal({ item, onClose }) {
           boxShadow: "0 8px 25px rgba(0,0,0,0.25)",
           animation: "scaleIn 0.25s ease",
           fontFamily: "system-ui, sans-serif",
-          overflow: "hidden", // rasm radius bilan chiroyli chiqishi uchun
-          
+          overflow: "hidden",
         }}
       >
-        {/* Yopish tugmasi (X) */}
         <button
           onClick={onClose}
           style={{
@@ -166,7 +161,6 @@ function Modal({ item, onClose }) {
           <i className="fas fa-times"></i>
         </button>
 
-        {/* Rasm */}
         <img
           src={item.image}
           alt={item.name}
@@ -179,7 +173,6 @@ function Modal({ item, onClose }) {
           }}
         />
 
-        {/* Nomi */}
         <h2
           style={{
             textAlign: "center",
@@ -192,7 +185,6 @@ function Modal({ item, onClose }) {
           {item.name}
         </h2>
 
-        {/* Jadval */}
         <table
           style={{
             width: "90%",
@@ -204,48 +196,17 @@ function Modal({ item, onClose }) {
         >
           <thead>
             <tr>
-              <th
-                style={{
-                  padding: "10px 0",
-                  textAlign: "left",
-                  fontWeight: 500,
-                  color: "#666",
-                }}
-              >
-                Size
-              </th>
-              <th
-                style={{
-                  padding: "10px 0",
-                  textAlign: "right",
-                  fontWeight: 500,
-                  color: "#666",
-                }}
-              >
-                Price
-              </th>
+              <th style={{padding:"10px 0", textAlign:"left", color:"#666"}}>Size</th>
+              <th style={{padding:"10px 0", textAlign:"right", color:"#666"}}>Price</th>
             </tr>
           </thead>
           <tbody>
             {item.prices.map((p, i) => (
               <tr key={i}>
-                <td
-                  style={{
-                    padding: "10px 0",
-                    borderBottom: "1px solid #DDDDDD",
-                  }}
-                >
+                <td style={{padding:"10px 0", borderBottom:"1px solid #DDDDDD"}}>
                   {p.size}
                 </td>
-                <td
-                  style={{
-                    padding: "10px 0",
-                    textAlign: "right",
-                    borderBottom: "1px solid #DDDDDD",
-                    fontWeight: 600,
-                    color: "#111",
-                  }}
-                >
+                <td style={{padding:"10px 0", textAlign:"right", borderBottom:"1px solid #DDDDDD", fontWeight:600, color:"#111"}}>
                   {p.price.toLocaleString()} UZS
                 </td>
               </tr>
@@ -256,7 +217,8 @@ function Modal({ item, onClose }) {
     </div>
   );
 }
-// ✅ Skeleton card
+
+// ---------------- Skeleton ----------------
 function SkeletonCard() {
   return (
     <div style={{ display: "flex", marginBottom: 20 }}>
@@ -264,8 +226,6 @@ function SkeletonCard() {
     </div>
   );
 }
-
-// ✅ Skeleton carusel item
 function SkeletonCarusell() {
   return (
     <div
@@ -279,57 +239,40 @@ function SkeletonCarusell() {
   );
 }
 
-// ✅ Qidiruv bar
+// ---------------- SearchBar ----------------
 function SearchBar({ search, setSearch }) {
   const [open, setOpen] = useState(false);
   const inputRef = useRef(null);
   const wrapperRef = useRef(null);
-  
+
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
-  
-  // ✅ Tashqariga bosilganda yopish
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
         setOpen(false);
       }
     };
-    
-    if (open) {
-      window.addEventListener("click", handleClickOutside);
-    }
+    if (open) window.addEventListener("click", handleClickOutside);
     return () => window.removeEventListener("click", handleClickOutside);
   }, [open]);
-  
-  const handleToggle = () => {
-    setOpen(true); // faqat ochiladi, yopilmaydi
-  };
-  
-  
 
   return (
-     <div
-      ref={wrapperRef}
-      style={{ display: "flex", alignItems: "center", position: "relative" }}
-    >
+    <div ref={wrapperRef} style={{ display:"flex", alignItems:"center", position:"relative" }}>
       <button
-        onClick={handleToggle}
+        onClick={() => setOpen(true)}
         style={{
-          background: "transparent",
-          border: "none",
-          color: "white",
-          fontSize: "20px",
-          cursor: "pointer",
-          zIndex: 2,
+          background:"transparent",
+          border:"none",
+          color:"white",
+          fontSize:"20px",
+          cursor:"pointer",
+          zIndex:2,
         }}
       >
-        <i 
-         style={{
-           color:'#0000009D'
-         }}
-         class="fa-solid fa-magnifying-glass"></i>
+        <i style={{color:'#0000009D'}} className="fa-solid fa-magnifying-glass"></i>
       </button>
       <input
         ref={inputRef}
@@ -338,26 +281,27 @@ function SearchBar({ search, setSearch }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{
-          position: "absolute",
-          right: 0,
-          top: "50%",
-          transform: "translateY(-50%)",
-          padding: "5px 10px",
-          borderRadius: "10px",
-          border: "none",
-          outline: "none",
-          fontSize: "16px",
+          position:"absolute",
+          right:0,
+          top:"50%",
+          transform:"translateY(-50%)",
+          padding:"5px 10px",
+          borderRadius:"10px",
+          border:"none",
+          outline:"none",
+          fontSize:"16px",
           width: open ? "180px" : "0px",
           opacity: open ? 1 : 0,
-          transition: "all 0.3s ease",
-          background: "#42424224",
-          color: "black",
+          transition:"all 0.3s ease",
+          background:"#42424224",
+          color:"black",
         }}
       />
     </div>
   );
 }
 
+// ---------------- App ----------------
 function App() {
   const [activeCatigory, setActiveCatigory] = useState("Drinks");
   const headerRef = useRef(null);
@@ -372,25 +316,19 @@ function App() {
   const catigory = ["Drinks", "Sweets", "Pizzas", "Burgers"];
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const res = await fetch("./data.json");
-        if (!res.ok) throw new Error("Fetch error");
-        const data = await res.json();
-        setTimeout(() => {
-          setData(data);
-          setLoading(false);
-        }, 1000);
-      } catch (err) {
-        console.error(err);
-        setErr(err.message);
+    try {
+      setLoading(true);
+      setTimeout(() => {
+        setData(dataJson); // ✅ import qilingan JSON ishlatyapmiz
         setLoading(false);
-      }
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+      setErr(err.message);
+      setLoading(false);
     }
-    fetchData();
 
-    // header scroll control
+    // header scroll
     let lastScroll = 0;
     const hideThreshold = 180;
     const showThreshold = 10;
@@ -407,16 +345,13 @@ function App() {
 
     const container = containerRef.current;
     container.addEventListener("scroll", handleScroll);
-
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ IntersectionObserver orqali active elementni aniqlash
+  // active category observer
   useEffect(() => {
     if (!caruselRef.current) return;
-
     const items = caruselRef.current.querySelectorAll("div[id]");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -426,14 +361,9 @@ function App() {
           }
         });
       },
-      {
-        root: caruselRef.current,
-        threshold: 0.6,
-      }
+      { root: caruselRef.current, threshold: 0.6 }
     );
-
     items.forEach((item) => observer.observe(item));
-
     return () => observer.disconnect();
   }, [catigory]);
 
@@ -443,14 +373,13 @@ function App() {
         ref={containerRef}
         className="container"
         style={{
-          width: "100%",
-          height: "100dvh",
-          paddingTop: "13%",
-          maxWidth: 550,
-          margin: "0 auto",
-          overflowY: "auto",
-          alignItems: "center",
-          
+          width:"100%",
+          height:"100dvh",
+          paddingTop:"13%",
+          maxWidth:550,
+          margin:"0 auto",
+          overflowY:"auto",
+          alignItems:"center",
         }}
       >
         {/* navbar */}
@@ -458,20 +387,18 @@ function App() {
           ref={headerRef}
           id="myHeader"
           style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            background: "#fefefe",
-            color: "white",
-            padding: "10px 15px",
-            textAlign: "center",
-            fontSize: "20px",
-            transition: "transform 0.3s ease-in-out",
-            zIndex: 1000,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            position:"fixed",
+            top:0,
+            left:0,
+            right:0,
+            background:"#fefefe",
+            padding:"10px 15px",
+            fontSize:"20px",
+            transition:"transform 0.3s ease-in-out",
+            zIndex:1000,
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"space-between",
             boxShadow:'0 0 5px 1px #0000003D'
           }}
         >
@@ -484,30 +411,23 @@ function App() {
           ref={caruselRef}
           className="carusel"
           style={{
-            position: "relative",
-            display: "flex",
-            alignItems: "center",
-            height: "220px",
-            width: "100%",
-            overflowX: "auto",
-            scrollSnapType: "x mandatory",
-            scrollBehavior: "smooth",
-            gap: "25px",
-            padding: "0 3%",
-            margin: "0 auto",
+            position:"relative",
+            display:"flex",
+            alignItems:"center",
+            height:"220px",
+            width:"100%",
+            overflowX:"auto",
+            scrollSnapType:"x mandatory",
+            scrollBehavior:"smooth",
+            gap:"25px",
+            padding:"0 3%",
+            margin:"0 auto",
           }}
         >
           {loading
-            ? Array(3)
-                .fill(0)
-                .map((_, i) => <SkeletonCarusell key={i} />)
+            ? Array(3).fill(0).map((_, i) => <SkeletonCarusell key={i} />)
             : catigory.map((c, i) => (
-                <Carusell
-                  key={i}
-                  index={i}
-                  title={c}
-                  isActive={activeCatigory == c}
-                />
+                <Carusell key={i} index={i} title={c} isActive={activeCatigory == c} />
               ))}
         </div>
 
@@ -516,21 +436,19 @@ function App() {
           key={activeCatigory + search}
           className="cards-grid"
           style={{
-            padding: "0 3%",
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 15,
-            overflowX: "hidden",
-            marginTop:'20px'
+            padding:"0 3%",
+            width:"100%",
+            display:"grid",
+            gridTemplateColumns:"1fr 1fr",
+            gap:15,
+            overflowX:"hidden",
+            marginTop:"20px"
           }}
         >
           {loading ? (
-            Array(4)
-              .fill(0)
-              .map((_, i) => <SkeletonCard key={i} />)
+            Array(4).fill(0).map((_, i) => <SkeletonCard key={i} />)
           ) : err ? (
-            <p style={{ color: "red" }}>{err}</p>
+            <p style={{ color:"red" }}>{err}</p>
           ) : (
             (() => {
               const filtered = data.filter(
@@ -538,7 +456,6 @@ function App() {
                   d.category === activeCatigory &&
                   d.name.toLowerCase().includes(search.toLowerCase())
               );
-
               return filtered.length > 0 ? (
                 filtered.map((d, i) => (
                   <Card key={i} item={d} onClick={setSelectedItem} />
@@ -546,12 +463,12 @@ function App() {
               ) : (
                 <p
                   style={{
-                    gridColumn: "1 / -1",
-                    textAlign: "center",
-                    color: "white",
-                    fontSize: "18px",
-                    marginTop: "20px",
-                    opacity: 0.8,
+                    gridColumn:"1 / -1",
+                    textAlign:"center",
+                    color:"white",
+                    fontSize:"18px",
+                    marginTop:"20px",
+                    opacity:0.8,
                   }}
                 >
                   ❌ Topilmadi
@@ -561,12 +478,9 @@ function App() {
           )}
         </div>
       </div>
-
-      {/* Modal */}
       <Modal item={selectedItem} onClose={() => setSelectedItem(null)} />
     </>
   );
 }
+
 export default App;
-
-
