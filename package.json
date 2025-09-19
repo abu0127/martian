@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-     "deploy": "npm run build && git add . && git commit -m \"deploy\" && git push origin master"
+    "build": "vite build",
+    "clean": "rm -rf dist",
+    "deploy": "npm run build && git add . && git commit -m 'update build' || echo 'no changes' && git push origin master && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "react": "^19.1.1",
