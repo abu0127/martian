@@ -3,6 +3,11 @@ import dataMenu from "./data";
 import drinks from "../public/coctel-banan.png";
 import sweet from "../public/sweets.png";
 import pizza from "../public/category_pizza.png";
+
+
+
+
+
 // import burger from "./assets/burger.png";
 
 const categoryImages = {

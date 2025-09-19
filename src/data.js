@@ -3,7 +3,7 @@ const data = [
   {
     category: "Drinks",
     name: "Pepsi",
-    image: "./public/pepsi.png",
+    image: "/pepsi.png",
     prices: [
       { size: "0.5L", price: 7000 },
       { size: "1L", price: 14000 },
